@@ -3,8 +3,6 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: licenta.aux
 Reallocating 'name_of_file' (item size: 1) to 17 items.
 A level-1 auxiliary file: foi_de_capat.aux
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-A level-1 auxiliary file: ghid.aux
 Reallocating 'name_of_file' (item size: 1) to 16 items.
 A level-1 auxiliary file: introducere.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
@@ -33,51 +31,52 @@ Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: licenta.bib
 Warning--string name "ieeecs" is undefined
---line 190 of file licenta.bib
+--line 192 of file licenta.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in Ndichu2026
 
 Done.
-You've used 5 entries,
+You've used 8 entries,
             4087 wiz_defined-function locations,
-            917 strings with 9466 characters,
-and the built_in function-call counts, 3165 in all, are:
-= -- 234
-> -- 79
-< -- 19
-+ -- 41
-- -- 15
-* -- 155
-:= -- 473
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 5
-chr.to.int$ -- 42
-cite$ -- 5
-duplicate$ -- 231
-empty$ -- 281
-format.name$ -- 19
-if$ -- 732
+            936 strings with 10188 characters,
+and the built_in function-call counts, 5284 in all, are:
+= -- 389
+> -- 152
+< -- 32
++ -- 79
+- -- 30
+* -- 259
+:= -- 778
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 72
+cite$ -- 9
+duplicate$ -- 389
+empty$ -- 456
+format.name$ -- 37
+if$ -- 1225
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 44
-newline$ -- 40
-num.names$ -- 4
-pop$ -- 122
+int.to.str$ -- 8
+missing$ -- 76
+newline$ -- 49
+num.names$ -- 7
+pop$ -- 205
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 248
+skip$ -- 407
 stack$ -- 0
-substring$ -- 93
-swap$ -- 163
-text.length$ -- 5
+substring$ -- 166
+swap$ -- 284
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
-warning$ -- 0
-while$ -- 10
-width$ -- 6
-write$ -- 66
-(There was 1 warning)
+type$ -- 8
+warning$ -- 1
+while$ -- 17
+width$ -- 9
+write$ -- 92
+(There were 2 warnings)

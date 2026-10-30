@@ -21,6 +21,22 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Ndichu2026}
+S.~Ndichu, T.~Ban, S.~Ozawa, T.~Takahashi, and D.~Inoue, ``Ai-driven security
+  alert screening and alert fatigue mitigation in security operations centers:
+  A survey,'' May 2026.
+
+\bibitem{Hassan2019}
+W.~U. Hassan, S.~Guo, D.~Li, Z.~Chen, K.~Jee, Z.~Li, and A.~Bates, ``Nodoze:
+  Combatting threat alert fatigue with automated provenance triage,'' in
+  \emph{network and distributed systems security symposium}, 2019.
+
+\bibitem{bliss1995reversal}
+J.~Bliss, M.~Dunn, and B.~S. Fuller, ``Reversal of the cry-wolf effect: An
+  investigation of two methods to increase alarm response rates,''
+  \emph{Perceptual and Motor Skills}, vol.~80, no. 3\_suppl, pp. 1231--1242,
+  1995.
+
 \bibitem{strunk}
 W.~Strunk, Jr. and E.~B. White, \emph{The Elements of Style}, 3rd~ed.\hskip 1em
   plus 0.5em minus 0.4em\relax Macmillan, 1979.

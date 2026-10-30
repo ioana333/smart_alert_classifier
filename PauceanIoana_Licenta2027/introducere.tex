@@ -1,11 +1,81 @@
 \chapter{Introducere}\label{ch:intro}
 \pagestyle{fancy}
 
-{\color{blue}\noindent Capitolul va ocupa 2-3 pagini.\\}
-\noindent Ce se scrie aici:
 
-\begin{itemize}
-	\item Contextul temei
-	\item Conturarea domeniului exact al temei
-\end{itemize}
+"Alert fatigue" este fenomenul prin care un operator
+expus la un volum mare de alerte, dintre care majoritatea
+se dovedesc nerelevante, își pierde treptat capacitatea de a 
+reacționa corect la fiecare~\cite{Ndichu2026}. Fenomenul
+e documentat extins în securitatea cibernetică: organizațiile
+primesc în medie 17.000 de alerte pe săptămână, dintre care
+peste 51\% sunt fals pozitive, iar doar 4\% ajung să investigate 
+corespunzator~\cite{Hassan2019}
+
+În monitorizarea video, apare acest fenomen, cu efecte similare. 
+Sistemele de supraveghere video trimit alerte operatorului 
+generate automat de diverși factori precum: declanșare mișcare, 
+depășire perimetru, accesarea zonei de interes, detectare prezență umană.
+Dacă acese alerte nu sunt atent filtrate ajung sa suprasolicite 
+operatorul. Acesta intră în modul de supraviețuire și ajunge, în timp, să
+trateze alertele cu indiferență, indiferent de relevanța ei reală.
+
+Acest fenomen de "alert fatigue" poate fi exploatat deliberat 
+printr-un atac de tip "cry-wolf". Acest tip de atac descrie scăderea
+ratei de răspuns la alarme și alerte pe măsură ce crește proporția de
+alarme false primite~\cite{bliss1995reversal}. Un atacator poate genera
+în mod repetat alerte false pentru a obosi operatorul, până în punctul în care
+o alertă reală este tratată cu aceași superficialitate ca precedentele
+false. Consecințele unui astfel de scenariu nu sunt ipotetice: atacul de 
+securitate Target din 2013, prin care s-au furat 40 de milioane de înregistrări
+de card, s-a produs parțial pentru că personalul nu a reacționat la timp la niște alerte
+primite, clasificandu-le greșit drept fals pozitive obișnuite~\cite{Hassan2019}
+
+Când vine vorba de monitorizare video, un posibil atacator poate profita
+de oboseala operatorului, declanșând în mod intenționat multiple alarme
+de la diverse camere și astfel 
+
+
+
+Transpunerea fenomenului din cyber in monitorizare video
+
+Descrierea fenomenului de cry wolf si cum cineva poate profita
+de el pentru a obosi operatorul si a efectua un furt (situatia
+Dariei)
+
+Problema generala: operatorii care primesc prea multe alerte
+incat trec pe modul survival si tind sa ignore
+dar asta duce la ratarea unor alerte
+
+Fluxul de lucru: cum vine alerta si cum se gestioneaza
+
+Descriere a experientei mele si statistice obtinute din ce am
+discutat cu colegii si am numarat alertele
+
+Net Investigation Velocity: NIV = T-manual \verb|\| T-asistat
+(din primul survey citit)
+
+Ideea solutiei:
+
+Descriu cum vreau sa pun un filtru pentru a reduce 
+alertele care nu trebuie sa intre (OpenCV, verific daca intr-adevar
+e ceva in imagine ce merita sa trimita alerta) si 
+dau LM-ului sa analizele a doua oara daca chiar merita 
+ca o alerta sa fie trimisa **pe scurt
+
+Domeniul exact:
+Tema: verificarea alertelor inainte sa fie trimise la operator
+folosind computer vision
+
+Sistemul primeste un clip scurt cu 1 minut inainte de a declansa
+alerta si decide daca merita sau nu trimisa spre analiza
+operatorului (alerta reala, falsa sau incerta)
+
+Ajuta omul nu il inlocuieste
+
+Nu inlocuieste sistemul initial si nu ia decizii finale de 
+interventie (situatii de ce nu ar fi bine sa ia alegerea)
+
+Analog cu gestionarea alertelor SOC, dar aplicata pe video-uri
+
+Structura lucrarii
 

@@ -1,0 +1,129 @@
+\chapter{Introducere}\label{ch:intro}
+\pagestyle{fancy}
+
+\section{Contextul temei}
+
+\textit{"Alert fatigue"} este fenomenul prin care un operator
+expus la un volum mare de alerte, dintre care majoritatea
+se dovedesc nerelevante, își pierde treptat capacitatea de a 
+reacționa corect la fiecare~\cite{Ndichu2026}. Fenomenul
+e documentat în securitatea cibernetică, unde analiștii
+primesc mai multe alerte decât pot investiga, iar cele mai multe
+sunt fals pozitive~\cite{Hassan2019}. Consecințele nu sunt
+doar teoretice: atacul asupra companiei Target din 2013, 
+prin care s-au furat 40 de milioane de înregistrări
+de card, s-a produs parțial pentru că personalul nu a reacționat la timp la niște alerte
+primite, clasificându-le greșit drept fals pozitive obișnuite~\cite{Hassan2019}.
+Organizațiile
+primesc în medie 17.000 de alerte pe săptămână, dintre care
+peste 51\% sunt fals pozitive, iar doar 4\% ajung să fie investigate 
+corespunzator~\cite{Hassan2019}.
+
+Efectul \textit{"cry-wolf"} descrie scăderea ratei de răspuns la
+alerte pe măsură ce crește proporția alertelor false primite~\cite{bliss1995reversal}. 
+Un atacator poate genera
+în mod repetat alerte false pentru a obosi operatorul, până în punctul în care
+o alertă reală este tratată cu aceași superficialitate ca precedentele
+false. 
+
+În monitorizare video, sistemul de detecție generează
+o alertă însoțită de un clip scurt, iar un operator uman
+decide dacă este o intruziune reală~\cite{Lohani2022}.
+Articolele dedicate detecției intruziunilor prin supraveghere video
+menționează printre alte provocări și alarmele false produse
+de variațiile de iluminare, de vegetație sau de animale~\cite{Lohani2022}.
+Situația se aseamănă cu gestionarea alertelor într-un centru de
+operațiuni de securitate (SOC), dar aplicată fluxurilor video, nu evenimentelor
+de rețea.
+
+Când vine vorba de monitorizare video, un posibil atacator poate folosi
+în mod tactic vulnerabilitățile sistemului de detecție, declanșând în mod
+intenționat alerte repetate pe camerele de supraveghere. Această 
+supraîncarcare duce la oboseala operațională a agentului de monitorizare, 
+apare fenomenul de \textit{"alert fatigue"}, determinându-l să intre 
+într-un mod de funcționare de tip
+\textit{"survival"}: verifică rapid, superficial sau ignoră direct, pentru a face față
+ritmului impus. Riscul direct al acestui comportament e ca alerte, care
+marchează incidente reale, ajung tratate la fel de superficial ca cele false.
+Pentru a combate această
+tehnică de evaziune, este esențială implementarea unui filtru inteligent
+de analiză video, capabil să valideze alertele și să transmită operatorului
+doar incidentele ce merită analizate, detaliat în capitolul următor. 
+
+\section{Motivația personală}
+
+Interesul meu pentru această temă provine din activitatea pe care o 
+desfășor ca operator în echipa de audit 24/7 a firmai BigBrother International.
+Printre sarcinile echipei se numără analiza alertelor declanșate
+de sistemul de supraveghere. Fluxul actual de lucru: sistemul de detecție
+generează o alertă pe baza unui eveniment observat în fluxul video, iar
+alerta ajunge la operator, care trebuie să decidă rapid dacă situația
+necesită intervenție (contactare client, echipa de securitate, 
+autoritățiile, în funcție de situație si procedură).
+Pe langă asta, încercam să înțelegem de ce a fost declanșată fiecare 
+alertă, pentru a comunica propuneri de îmbunătățire a sistemului.
+
+Pe durata activității mele am observat o problemă cu efect direct
+asupra calității monitorizării. În timpul zilei, sistemul actual
+generează un număr foarte mare de alerte, deoarece semnalează
+mișcare într-o zonă marcată, indiferent de cauză. Așadar, sistemul nu face
+diferența între o alertă reală si una falsă, produsă de exemplu, de 
+un animal sau o persoana care doar trece prin cadru.
+Cum riscul unui furt sau al unui act de
+sabotaj este perceput ca fiind mai redus ziua, iar aproape toate alertele
+sunt false, echipa a ajuns treptat să le trateze cu mai puțină atenție. 
+
+
+Consecințele au fost vizibile în două situații reale.
+În prima situație, 
+un client a dorit să testeze sistemul. A declanșat în mod
+intenționat opt alerte de la camere diferite montate pe locația
+sa, apoi s-a apropiat de un cablu, simulând ca vrea să îl taie
+cu un fierăstrău. Având de procesat un volum mare de alerte 
+și bazându-se pe ideea că în plină zi nu se poate întâmpla nimic
+grav, operatorul de tură a închis alertele fără a le vizualiza.
+În de a doua situație, un coleg monitoriza un depozit de marfă. 
+Odată cu începerea programului de lucru, numărul alertelor a
+crescut, iar un furt de paleți comis chiar de către angajații 
+locației a trecut neobservat.
+
+Aceste situații nu indică lipsă de profesionalism, ci un efect
+previzibil al volumului de alerte asupra atenției umane.
+Ele ilustrează riscul descris anterior. Observația din practică
+este motivația pentru tema lucrării: un filtru care verifică automat
+alertele și transmite operatorului doar incidentele care merită analizate.
+
+\section{Delimitarea domeniului}
+
+Lucrarea se situează în domeniul procesării video asistate
+de inteligență artificială, aplicat sistemelor de supraveghere. Sistemul de detecție
+existent semnalează evenimente precum intrarea într-o zonă marcată. 
+Lucrarea propune un pas suplimentar: un clasificator care primește clipul
+video asociat unei alerte deja declanșate și estimează dacă este reală sau falsă, 
+înainte ca alerta să ajungă la operator. Cazurile incerte sunt transmise operatorului, 
+pentru că un filtru care închide automat o alertă reală ar repeta greșala operatorului obosit.
+În această lucrare, o alertă falsă (fals pozitiv) este o
+alertă ce nu trebuia trimisă spre analiza operatorului, ea
+fiind categorizată drept zgomot.
+
+Soluția nu înlocuiește sistemul de detecție și nu elimină operatorul uman.
+Este urmărită reducerea numărului de alerte false pe care operatorul
+trebuie să le analizeze. Nu fac obiectul lucrării dezvoltarea unui nou detector, 
+decizia de intervenție sau contactarea autorităților. Datele de antrenare
+și testare provin din istoricul de alerte și din înregistrările video ale firmei.
+
+
+\section{Structura lucrării}
+
+Lucrarea este structurată astfel:
+\begin{itemize}
+    \item Capitolul 2 formulează exact tema și obiectivele proiectului
+    \item Capitolul 3 trece în revistă stadiul actual al domeniului
+    \item Capitolul 4 fundamentează teoretic soluția propusă
+    \item Capitolul 5 descrie proiectarea și implementarea aplicației
+    \item Capitolul 6 reprezintă testarea și validarea rezultatelor
+    \item Capitolul 7 oferă un manual de instalare și utilizare
+    \item Capitolul 8 trage concluziile și conturează direcții viitoare de dezvoltare
+\end{itemize}
+
+
